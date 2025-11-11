@@ -1,13 +1,286 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portofolio Benedictus Adrian</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        background-color: #f2f2f2;
+    }
+    #home {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+    section {
+        scroll-margin-top: 50px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top mb-3">
+    <div class="container-fluid">
+
+    <a class="navbar-brand d-flex align-items-center" href="#home">
+        <img src="profile01.jpg" 
+            width="32" height="32" 
+            class="rounded-circle mx-3 " alt="Profile">
+        Adrian
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+            <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portfolio">Portofolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#social">Social</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+        </ul>
+    </div>
+
+    </div>
+</nav>
+
+<!-- SECTION HOME -->
+<section id="home" class="container py-5 justify-content-center">
+    <div class="row align-items-center">
+
+        <div class="col-md-6">
+            <h1 class="fw-bold">Hi, I'm<br>Benedictus Adrian Nelham</h1>
+            <p class="mt-3">
+                My name is Adrian, I’m an undergraduate Visual Communication Design student at Bina Nusantara University. 
+            </p>
+            <p class=>
+                I really like drawing 
+            </p>
+        </div>
+
+    <div class="col-md-6 text-center pe-md-5">
+      <img src="01.png" 
+           class="img-fluid rounded" alt="Character Image" style="max-height:420px;">
+      <p class="mt-2">Lorem Ipsum</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION ABOUT -->
+<section id="about" class="container py-5" style="min-height:100vh;">
+  <div class="row align-items-start">
+
+    <!-- FOTO KIRI -->
+    <div class="col-md-4 mb-4">
+      <img src="profile02.jpg" 
+           alt="Adrian Photo" 
+           class="img-fluid rounded" 
+           style="border-radius: 20px;">
+    </div>
+
+    <!-- TEKS KANAN -->
+    <div class="col-md-8">
+
+      <h2 class="fw-bold">Graphic Designer</h2>
+      <p class="mt-3">
+        Hi, It's Adrian here, so first of all I really like drawing since I was a kid.
+        Growing up with that I learned that I like drawing living creatures.
+      </p>
+
+      <div class="row mt-4">
+        
+        <!-- EXPERIENCE -->
+        <div class="col-md-6 mb-4">
+          <h5 class="fw-bold">Experience</h5>
+          <ul class="list-unstyled mt-2">
+            <li><a href="#" class="text-decoration-none">2nd Winner English Speech Contest (2017)</a></li>
+            <li><a href="#" class="text-decoration-none">TeachCast with Oxford Course (2020)</a></li>
+            <li><a href="#" class="text-decoration-none">Merry Bianca Life Camp as Assistant Coach (2022)</a></li>
+            <li><a href="#" class="text-decoration-none">Freshman Partner at BINUS University (2024 - 2025)</a></li>
+          </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="col-md-6 mb-4">
+          <h5 class="fw-bold">Education</h5>
+          <p class="mt-2 mb-1">2020 - 2023<br>SMA Putra Nirmala Cirebon<br>Social</p>
+          <p class="mt-2">2023 - Present<br>BINA NUSANTARA University<br>Visual Communication Design</p>
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+
+        <!-- SKILLS -->
+        <div class="col-md-6 mb-4">
+          <h5 class="fw-bold">Skills</h5>
+          <ul class="list-unstyled mt-2">
+            <li>Graphic Design</li>
+            <li>Photography</li>
+            <li>Video Editing</li>
+            <li>Photo Editing</li>
+            <li>Communication</li>
+            <li>Social Media</li>
+            <li>Digital Illustration</li>
+            <li>Manual Illustration</li>
+          </ul>
+        </div>
+
+        <!-- TRAITS -->
+        <div class="col-md-6 mb-4">
+          <h5 class="fw-bold">Traits</h5>
+          <ul class="list-unstyled mt-2">
+            <li>Easy going</li>
+            <li>Cheerful</li>
+            <li>Patience</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SECTION PORTFOLIO -->
+<section id="portfolio" class="container-fluid py-5" style="min-height:100vh; background:#bfbfbf;">
+  <div class="container">
+
+    <div class="row">
+      <!-- KOLOM KIRI -->
+      <div class="col-md-4">
+
+        <div class="mb-3">
+          <button class="btn btn-light w-100 fw-semibold">
+            Digital Illustration
+          </button>
+        </div>
+
+        <div class="row g-3">
+
+          <div class="col-6">
+            <img src="https://i.ibb.co/4Whr3Qv/sample1.jpg" class="img-fluid rounded" alt="">
+          </div>
+
+          <div class="col-6">
+            <img src="https://i.ibb.co/hMTCkJL/sample2.jpg" class="img-fluid rounded" alt="">
+          </div>
+
+          <div class="col-6">
+            <img src="https://i.ibb.co/QNkR7Yg/sample3.jpg" class="img-fluid rounded" alt="">
+          </div>
+
+          <div class="col-6">
+            <img src="https://i.ibb.co/KLXsvw0/sample4.jpg" class="img-fluid rounded" alt="">
+          </div>
+
+          <div class="col-6">
+            <img src="https://i.ibb.co/zVd3p8Q/sample5.jpg" class="img-fluid rounded" alt="">
+          </div>
+
+          <div class="col-6">
+            <img src="https://i.ibb.co/M8c6Tyf/sample6.jpg" class="img-fluid rounded" alt="">
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- KOLom KANAN (GAMBAR BESAR) -->
+      <div class="col-md-8 d-flex justify-content-center align-items-center">
+        <img src="https://i.ibb.co/NZ9Q2mP/sample-big.jpg" 
+             class="img-fluid rounded shadow" 
+             style="border:8px solid #1e90ff; max-height:650px; object-fit:cover;">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION SOCIAL -->
+<section id="social" class="container py-5" style="min-height: 100vh;">
+  <h2>Social</h2>
+  <p>Link sosial media kamu...</p>
+</section>
+
+<!-- SECTION CONTACT -->
+ <section id="contact" class="container py-5" style="min-height: 100vh;">
+  <h2 class="text-center mb-4" style="font-weight:600;">Contact Me</h2>
+
+  <p class="text-center" style="max-width: 550px; margin:auto; line-height:1.6;">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+  </p>
+
+  <!-- INPUT + BUTTON -->
+  <div class="d-flex flex-column align-items-center mt-4">
+    <input type="text" placeholder="Enter Name" class="form-control mb-3"
+           style="width: 260px; border-radius: 6px; text-align:center;">
+
+    <a href="https://youtube.com" target="_blank" 
+       class="btn btn-outline-dark"
+       style="width: 260px; border-radius: 6px;">
+       Youtube
+    </a>
+  </div>
+
+  <!-- EMAIL & LINKEDIN -->
+  <div class="text-center mt-5" style="font-size: 14px;">
+    <p style="margin-bottom:4px;">benedictusad24@gmail.com</p>
+    <a href="https://www.linkedin.com/in/benedictusad24/adrian00264" 
+       target="_blank" 
+       style="text-decoration:none; color:black;">
+       linkedin.com/in/benedictusad24/adrian00264
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER SOCIAL -->
+<footer class="py-4" style="background:#1a1a1a; color:white;">
+  <div class="container d-flex flex-column align-items-center">
+
+    <h5 class="mb-3" style="font-weight:500;">Follow Me</h5>
+
+    <div class="d-flex justify-content-center mb-3">
+      <a href="https://instagram.com/USERNAME" target="_blank" class="mx-3" style="color:white;">
+        <i class="fab fa-instagram" style="font-size:30px;"></i>
+      </a>
+
+      <a href="https://tiktok.com/@USERNAME" target="_blank" class="mx-3" style="color:white;">
+        <i class="fab fa-tiktok" style="font-size:30px;"></i>
+      </a>
+
+      <a href="https://wa.me/62XXXXXXXXXX" target="_blank" class="mx-3" style="color:white;">
+        <i class="fab fa-whatsapp" style="font-size:30px;"></i>
+      </a>
+    </div>
+
+    <p class="mt-2" style="font-size:14px; margin:0;">@ 2025 Adrian | All Rights Reserved</p>
+
+  </div>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
