@@ -7,6 +7,8 @@
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <style>
     html {
@@ -23,6 +25,18 @@
     section {
         scroll-margin-top: 50px;
     }
+    /* Navbar hover + active styles */
+    .navbar-dark .navbar-nav .nav-item,
+    .navbar-dark .navbar-nav .nav-link {
+        transition: background-color .2s ease, color .2s ease;
+    }
+    .navbar-dark .navbar-nav .nav-item { border-radius: .375rem; margin: 0 .125rem; }
+    .navbar-dark .navbar-nav .nav-link { color:#ffffff !important; padding: .5rem .85rem; display:block; }
+    .navbar-dark .navbar-nav .nav-item:hover,
+    .navbar-dark .navbar-nav .nav-item.active { background: #ffffff; }
+    .navbar-dark .navbar-nav .nav-item:hover .nav-link,
+    .navbar-dark .navbar-nav .nav-item.active .nav-link { color: #000000 !important; }
+    .navbar-dark .navbar-nav .nav-link:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 2px; }
 </style>
 </head>
 
@@ -63,19 +77,20 @@
 <section id="home" class="container py-5 justify-content-center">
     <div class="row align-items-center">
 
-        <div class="col-md-6">
+        <div class="col-md-6" data-aos="fade-right">
             <h1 class="fw-bold">Hi, I'm<br>Benedictus Adrian Nelham</h1>
-            <p class="mt-3">
-                My name is Adrian, I’m an undergraduate Visual Communication Design student at Bina Nusantara University. 
+            <p class="mt-3" data-aos="fade-right" data-aos-delay="100">
+                My name is Adrian, I'm an undergraduate Visual Communication Design student at Bina Nusantara University. 
             </p>
-            <p class=>
+            <p class="" data-aos="fade-right" data-aos-delay="200">
                 I really like drawing 
             </p>
         </div>
+    <div class="col-md-2"></div>
 
-    <div class="col-md-6 text-center pe-md-5">
+    <div class="col-md-4 text-center " data-aos="fade-left" data-aos-delay="150">
       <img src="01.png" 
-           class="img-fluid rounded" alt="Character Image" style="max-height:420px;">
+           class="img-fluid rounded" alt="Character Image" style="max-height:500px;">
       <p class="mt-2">Lorem Ipsum</p>
     </div>
 
@@ -87,7 +102,7 @@
   <div class="row align-items-start">
 
     <!-- FOTO KIRI -->
-    <div class="col-md-4 mb-4">
+    <div class="col-md-4 mb-4" data-aos="fade-right">
       <img src="profile02.jpg" 
            alt="Adrian Photo" 
            class="img-fluid rounded" 
@@ -95,7 +110,7 @@
     </div>
 
     <!-- TEKS KANAN -->
-    <div class="col-md-8">
+    <div class="col-md-8" data-aos="fade-left">
 
       <h2 class="fw-bold">Graphic Designer</h2>
       <p class="mt-3">
@@ -166,7 +181,7 @@
 
     <div class="row">
       <!-- KOLOM KIRI -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-right">
 
         <div class="mb-3">
           <button class="btn btn-light w-100 fw-semibold">
@@ -205,7 +220,7 @@
       </div>
 
       <!-- KOLom KANAN (GAMBAR BESAR) -->
-      <div class="col-md-8 d-flex justify-content-center align-items-center">
+      <div class="col-md-8 d-flex justify-content-center align-items-center" data-aos="fade-left">
         <img src="https://i.ibb.co/NZ9Q2mP/sample-big.jpg" 
              class="img-fluid rounded shadow" 
              style="border:8px solid #1e90ff; max-height:650px; object-fit:cover;">
@@ -218,13 +233,15 @@
 
 <!-- SECTION SOCIAL -->
 <section id="social" class="container py-5" style="min-height: 100vh;">
-  <h2>Social</h2>
-  <p>Link sosial media kamu...</p>
+  <h2 data-aos="fade-right">Social</h2>
+  <p data-aos="fade-left" data-aos-delay="100">Link sosial media kamu...</p>
 </section>
+
+
 
 <!-- SECTION CONTACT -->
  <section id="contact" class="container py-5" style="min-height: 100vh;">
-  <h2 class="text-center mb-4" style="font-weight:600;">Contact Me</h2>
+  <h2 class="text-center mb-4" style="font-weight:600;" data-aos="fade-right">Contact Me</h2>
 
   <p class="text-center" style="max-width: 550px; margin:auto; line-height:1.6;">
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -232,7 +249,7 @@
   </p>
 
   <!-- INPUT + BUTTON -->
-  <div class="d-flex flex-column align-items-center mt-4">
+  <div class="d-flex flex-column align-items-center mt-4" data-aos="fade-left" data-aos-delay="100">
     <input type="text" placeholder="Enter Name" class="form-control mb-3"
            style="width: 260px; border-radius: 6px; text-align:center;">
 
@@ -244,7 +261,7 @@
   </div>
 
   <!-- EMAIL & LINKEDIN -->
-  <div class="text-center mt-5" style="font-size: 14px;">
+  <div class="text-center mt-5" style="font-size: 14px;" data-aos="fade-right" data-aos-delay="150">
     <p style="margin-bottom:4px;">benedictusad24@gmail.com</p>
     <a href="https://www.linkedin.com/in/benedictusad24/adrian00264" 
        target="_blank" 
@@ -279,7 +296,77 @@
   </div>
 </footer>
 
+<!-- AOS (Animate On Scroll) -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, easing: 'ease-in', once: true });
+  // If items appear too early/late, tweak offset:
+  // AOS.init({ offset: 80, duration: 700, easing: 'ease-in', once: true });
+</script>
 
+<!-- Active nav highlighting on scroll -->
+<script>
+(function() {
+  const links = Array.from(document.querySelectorAll('.navbar .nav-link[href^="#"]'));
+  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (!links.length || !sections.length) return;
+
+  const setActive = (id) => {
+    links.forEach(a => {
+      const isActive = a.getAttribute('href') === '#' + id;
+      a.classList.toggle('active', isActive);
+      const li = a.closest('.nav-item');
+      if (li) li.classList.toggle('active', isActive);
+      if (isActive) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  };
+
+  let observer; let isManual = false; let manualTimer;
+  const buildObserver = () => {
+    if (observer) observer.disconnect();
+    const nav = document.querySelector('.navbar');
+    const h = nav ? nav.offsetHeight : 0;
+    observer = new IntersectionObserver((entries) => {
+      if (isManual) return;
+      let topMost = null;
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (!topMost || entry.intersectionRatio > topMost.intersectionRatio) {
+            topMost = entry;
+          }
+        }
+      });
+      if (topMost) setActive(topMost.target.id);
+    }, { threshold: [0.5, 0.75], rootMargin: `-${h + 8}px 0px -40% 0px` });
+    sections.forEach(sec => observer.observe(sec));
+  };
+
+  buildObserver();
+  window.addEventListener('resize', () => buildObserver());
+
+  // Initial state
+  if (location.hash && document.querySelector(location.hash)) {
+    setActive(location.hash.slice(1));
+  } else if (sections[0]) {
+    setActive(sections[0].id);
+  }
+
+  // Smooth scroll and temporary manual lock to prevent flicker
+  links.forEach(a => a.addEventListener('click', (e) => {
+    const id = (a.getAttribute('href') || '#').slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    isManual = true;
+    clearTimeout(manualTimer);
+    setActive(id);
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try { history.replaceState(null, '', '#' + id); } catch {}
+    manualTimer = setTimeout(() => { isManual = false; }, 700);
+  }));
+})();
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
