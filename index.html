@@ -9,6 +9,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- AOS (Animate On Scroll) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
 
 <style>
     html {
@@ -25,6 +29,29 @@
     section {
         scroll-margin-top: 50px;
     }
+    /* Portfolio carousel */
+    .portfolio-wrap { padding-block: 2rem; }
+    .pc-header { margin: .25rem 0 1rem; }
+    .pc-title { font-weight: 700; margin: 0; }
+    .pc-controls .btn { width: 38px; height: 38px; line-height: 1; padding: 0; display:inline-flex; align-items:center; justify-content:center; }
+    .pc-viewport { overflow: hidden; width: 100%; }
+    .pc-track { display: flex; gap: 0; transition: transform .35s ease; will-change: transform; }
+    .pc-item { flex: 0 0 calc(100% / 3); padding: .5rem; }
+    .pc-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); background:#eee; transition: transform .25s ease, box-shadow .25s ease; }
+    .pc-item:hover img { transform: scale(1.03); box-shadow: 0 6px 20px rgba(0,0,0,.16); }
+    .pc-viewport { cursor: grab; }
+    .pc-viewport.dragging { cursor: grabbing; }
+    .pc-track.dragging { transition: none !important; }
+    .pc-viewport.dragging .pc-item img { transform: none !important; box-shadow: 0 2px 8px rgba(0,0,0,.08) !important; }
+    .pc-item img { user-select: none; -webkit-user-drag: none; }
+
+    /* Fixed-size portfolio modal; image fits inside */
+    .portfolio-modal .modal-dialog { max-width: 900px; width: calc(100% - 2rem); }
+    .portfolio-modal .modal-body { padding: 1rem 1rem; }
+    .portfolio-modal .pm-media { width: 100%; height: min(70vh, 600px); display: flex; align-items: center; justify-content: center; background: #0e0e0e; border-radius: .5rem; }
+    .portfolio-modal .pm-media img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; background: transparent; box-shadow: none; border-radius: .5rem; }
+    @media (max-width: 991.98px) { .pc-item { flex-basis: 50%; } }
+    @media (max-width: 575.98px) { .pc-item { flex-basis: 100%; } }
     /* Navbar hover + active styles */
     .navbar-dark .navbar-nav .nav-item,
     .navbar-dark .navbar-nav .nav-link {
@@ -64,8 +91,7 @@
             <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
             <li class="nav-item"><a class="nav-link" href="#portfolio">Portofolio</a></li>
-            <li class="nav-item"><a class="nav-link" href="#social">Social</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="#social">Connect</a></li>
 
         </ul>
     </div>
@@ -176,123 +202,157 @@
 
 
 <!-- SECTION PORTFOLIO -->
-<section id="portfolio" class="container-fluid py-5" style="min-height:100vh; background:#bfbfbf;">
+<section id="portfolio" class="container-fluid py-5" style="background:#ddd;">
   <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold" data-aos="fade-up">Portfolio</h2>
+      <p class="mb-0" style="max-width:760px; margin:0 auto;" data-aos="fade-up" data-aos-delay="100">
+        Here are some of my recent and favorite works. I do digital illustrations,
+        manual illustrations, photography, and poster design for assignments and fun.
+      </p>
+    </div>
 
-    <div class="row">
-      <!-- KOLOM KIRI -->
-      <div class="col-md-4" data-aos="fade-right">
-
-        <div class="mb-3">
-          <button class="btn btn-light w-100 fw-semibold">
-            Digital Illustration
-          </button>
+    <!-- Carousel 1 Digital illustration-->
+    <div class="portfolio-wrap" data-aos="fade-up">
+      <div class="d-flex justify-content-between align-items-center pc-header">
+        <h3 class="pc-title">Digital Illustration</h3>
+        <div class="pc-controls">
+          <button class="btn btn-light rounded-circle pc-prev" aria-label="Previous">&#8249;</button>
+          <button class="btn btn-light rounded-circle pc-next ms-2" aria-label="Next">&#8250;</button>
         </div>
-
-        <div class="row g-3">
-
-          <div class="col-6">
-            <img src="https://i.ibb.co/4Whr3Qv/sample1.jpg" class="img-fluid rounded" alt="">
-          </div>
-
-          <div class="col-6">
-            <img src="https://i.ibb.co/hMTCkJL/sample2.jpg" class="img-fluid rounded" alt="">
-          </div>
-
-          <div class="col-6">
-            <img src="https://i.ibb.co/QNkR7Yg/sample3.jpg" class="img-fluid rounded" alt="">
-          </div>
-
-          <div class="col-6">
-            <img src="https://i.ibb.co/KLXsvw0/sample4.jpg" class="img-fluid rounded" alt="">
-          </div>
-
-          <div class="col-6">
-            <img src="https://i.ibb.co/zVd3p8Q/sample5.jpg" class="img-fluid rounded" alt="">
-          </div>
-
-          <div class="col-6">
-            <img src="https://i.ibb.co/M8c6Tyf/sample6.jpg" class="img-fluid rounded" alt="">
-          </div>
-
+      </div>
+      <div class="pc-viewport">
+        <div class="pc-track">
+          <div class="pc-item"><img src="digital_illustration/01.png" alt="Item 1"></div>
+          <div class="pc-item"><img src="digital_illustration/02.png" alt="Item 2"></div>
+          <div class="pc-item"><img src="digital_illustration/03.png" alt="Item 3"></div>
+          <div class="pc-item"><img src="digital_illustration/04.png" alt="Item 4"></div>
+          <div class="pc-item"><img src="digital_illustration/05.png" alt="Item 5"></div>
+          <div class="pc-item"><img src="digital_illustration/06.png" alt="Item 6"></div>
+          <div class="pc-item"><img src="digital_illustration/07.png" alt="Item 7"></div>
+          <div class="pc-item"><img src="digital_illustration/08.png" alt="Item 8"></div>
+          <div class="pc-item"><img src="digital_illustration/09.jpg" alt="Item 9"></div>
+          <div class="pc-item"><img src="digital_illustration/10.png" alt="Item 10"></div>
         </div>
-
       </div>
+    </div>
 
-      <!-- KOLom KANAN (GAMBAR BESAR) -->
-      <div class="col-md-8 d-flex justify-content-center align-items-center" data-aos="fade-left">
-        <img src="https://i.ibb.co/NZ9Q2mP/sample-big.jpg" 
-             class="img-fluid rounded shadow" 
-             style="border:8px solid #1e90ff; max-height:650px; object-fit:cover;">
+    <!-- Carousel 2 -->
+    <div class="portfolio-wrap" data-aos="fade-up">
+      <div class="d-flex justify-content-between align-items-center pc-header">
+        <h3 class="pc-title">Manual Illustration</h3>
+        <div class="pc-controls">
+          <button class="btn btn-light rounded-circle pc-prev" aria-label="Previous">&#8249;</button>
+          <button class="btn btn-light rounded-circle pc-next ms-2" aria-label="Next">&#8250;</button>
+        </div>
       </div>
+      <div class="pc-viewport">
+        <div class="pc-track">
+          <div class="pc-item"><img src="manual_illustration/01.jpg" alt="Item 1"></div>
+          <div class="pc-item"><img src="manual_illustration/02.jpg" alt="Item 2"></div>
+          <div class="pc-item"><img src="manual_illustration/03.jpg" alt="Item 3"></div>
+          <div class="pc-item"><img src="manual_illustration/04.jpg" alt="Item 4"></div>
+          <div class="pc-item"><img src="manual_illustration/05.jpg" alt="Item 5"></div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Carousel 3 -->
+    <div class="portfolio-wrap" data-aos="fade-up">
+      <div class="d-flex justify-content-between align-items-center pc-header">
+        <h3 class="pc-title">Photography</h3>
+        <div class="pc-controls">
+          <button class="btn btn-light rounded-circle pc-prev" aria-label="Previous">&#8249;</button>
+          <button class="btn btn-light rounded-circle pc-next ms-2" aria-label="Next">&#8250;</button>
+        </div>
+      </div>
+      <div class="pc-viewport">
+        <div class="pc-track">
+          <div class="pc-item"><img src="photography/01.jpg" alt="Item 1"></div>
+          <div class="pc-item"><img src="photography/02.jpg" alt="Item 2"></div>
+          <div class="pc-item"><img src="photography/03.jpg" alt="Item 3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel 4 -->
+    <div class="portfolio-wrap" data-aos="fade-up">
+      <div class="d-flex justify-content-between align-items-center pc-header">
+        <h3 class="pc-title">Poster Design</h3>
+        <div class="pc-controls">
+          <button class="btn btn-light rounded-circle pc-prev" aria-label="Previous">&#8249;</button>
+          <button class="btn btn-light rounded-circle pc-next ms-2" aria-label="Next">&#8250;</button>
+        </div>
+      </div>
+      <div class="pc-viewport">
+        <div class="pc-track">
+          <div class="pc-item"><img src="poster_design/01.png" alt="Item 1"></div>
+          <div class="pc-item"><img src="poster_design/02.png" alt="Item 2"></div>
+          <div class="pc-item"><img src="poster_design/03.jpg" alt="Item 3"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Portfolio Modal -->
+<div class="modal fade portfolio-modal" id="portfolioModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pm-title">Portfolio Item</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="pm-media mb-3">
+          <img id="pm-image" src="" alt=""/>
+        </div>
+        <p id="pm-desc" class="mb-0 text-muted"></p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+<!-- SECTION SOCIAL -->
+<section id="social" class="py-5 text-center" style="background: #111; color: #fff; min-height: 100vh;">
+  <div class="container">
+    <h2 class="mb-4" data-aos="fade-up" style="font-weight: 600; letter-spacing: 1px;">
+      SOSMED GUE
+    </h2>
+    <p class="mb-5 text-light" data-aos="fade-up" data-aos-delay="100">
+      Want to visit my social media? 
+Check these below and find me there
+I’d gladly welcome everyone
+    </p>
+
+    <!-- Social Icons -->
+    <div class="d-flex justify-content-center flex-wrap gap-4 mt-4">
+      <a href="https://instagram.com/USERNAME" target="_blank" class="social-link" style="color:#E1306C;">
+        <i class="fab fa-instagram fa-3x"></i>
+      </a>
+
+      <a href="https://tiktok.com/@USERNAME" target="_blank" class="social-link" style="color:#fff;">
+        <i class="fab fa-tiktok fa-3x"></i>
+      </a>
+
+      <a href="https://youtube.com/@USERNAME" target="_blank" class="social-link" style="color:#FF0000;">
+        <i class="fab fa-youtube fa-3x"></i>
+      </a>
+
+      <a href="https://wa.me/62XXXXXXXXXX" target="_blank" class="social-link" style="color:#25D366;">
+        <i class="fab fa-whatsapp fa-3x"></i>
+      </a>
     </div>
   </div>
 </section>
 
-
-<!-- SECTION SOCIAL -->
-<section id="social" class="container py-5" style="min-height: 100vh;">
-  <h2 data-aos="fade-right">Social</h2>
-  <p data-aos="fade-left" data-aos-delay="100">Link sosial media kamu...</p>
-</section>
-
-
-
-<!-- SECTION CONTACT -->
- <section id="contact" class="container py-5" style="min-height: 100vh;">
-  <h2 class="text-center mb-4" style="font-weight:600;" data-aos="fade-right">Contact Me</h2>
-
-  <p class="text-center" style="max-width: 550px; margin:auto; line-height:1.6;">
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-  </p>
-
-  <!-- INPUT + BUTTON -->
-  <div class="d-flex flex-column align-items-center mt-4" data-aos="fade-left" data-aos-delay="100">
-    <input type="text" placeholder="Enter Name" class="form-control mb-3"
-           style="width: 260px; border-radius: 6px; text-align:center;">
-
-    <a href="https://youtube.com" target="_blank" 
-       class="btn btn-outline-dark"
-       style="width: 260px; border-radius: 6px;">
-       Youtube
-    </a>
-  </div>
-
-  <!-- EMAIL & LINKEDIN -->
-  <div class="text-center mt-5" style="font-size: 14px;" data-aos="fade-right" data-aos-delay="150">
-    <p style="margin-bottom:4px;">benedictusad24@gmail.com</p>
-    <a href="https://www.linkedin.com/in/benedictusad24/adrian00264" 
-       target="_blank" 
-       style="text-decoration:none; color:black;">
-       linkedin.com/in/benedictusad24/adrian00264
-    </a>
-  </div>
-</section>
 
 <!-- FOOTER SOCIAL -->
 <footer class="py-4" style="background:#1a1a1a; color:white;">
   <div class="container d-flex flex-column align-items-center">
-
-    <h5 class="mb-3" style="font-weight:500;">Follow Me</h5>
-
-    <div class="d-flex justify-content-center mb-3">
-      <a href="https://instagram.com/USERNAME" target="_blank" class="mx-3" style="color:white;">
-        <i class="fab fa-instagram" style="font-size:30px;"></i>
-      </a>
-
-      <a href="https://tiktok.com/@USERNAME" target="_blank" class="mx-3" style="color:white;">
-        <i class="fab fa-tiktok" style="font-size:30px;"></i>
-      </a>
-
-      <a href="https://wa.me/62XXXXXXXXXX" target="_blank" class="mx-3" style="color:white;">
-        <i class="fab fa-whatsapp" style="font-size:30px;"></i>
-      </a>
-    </div>
-
     <p class="mt-2" style="font-size:14px; margin:0;">@ 2025 Adrian | All Rights Reserved</p>
-
   </div>
 </footer>
 
@@ -369,5 +429,141 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Portfolio carousel script (looping, 3 per view, drag/swipe + modal) -->
+<script>
+(function(){
+  // Suppress click when a drag/swipe just happened
+  let suppressClickUntil = 0;
+  function initCarousel(root){
+    const track = root.querySelector('.pc-track');
+    const viewport = root.querySelector('.pc-viewport');
+    const prev = root.querySelector('.pc-prev');
+    const next = root.querySelector('.pc-next');
+    if(!track || !prev || !next) return;
+    let animating = false;
+
+    const itemWidth = () => {
+      const it = track.querySelector('.pc-item');
+      return it ? it.getBoundingClientRect().width : 0;
+    };
+
+    function slide(dir){
+      if(animating) return; animating = true;
+      const w = itemWidth(); if(!w) { animating = false; return; }
+      if(dir === 1){
+        track.style.transition = 'transform .35s ease';
+        track.style.transform = `translateX(${-w}px)`;
+        track.addEventListener('transitionend', onEnd, {once:true});
+        function onEnd(){
+          track.appendChild(track.firstElementChild);
+          track.style.transition = 'none';
+          track.style.transform = 'translateX(0)';
+          requestAnimationFrame(()=>{ animating = false; });
+        }
+      } else {
+        track.style.transition = 'none';
+        track.insertBefore(track.lastElementChild, track.firstElementChild);
+        track.style.transform = `translateX(${-w}px)`;
+        requestAnimationFrame(()=>{
+          track.style.transition = 'transform .35s ease';
+          track.style.transform = 'translateX(0)';
+          track.addEventListener('transitionend', ()=>{ animating = false; }, {once:true});
+        });
+      }
+    }
+
+    prev.addEventListener('click', ()=> slide(-1));
+    next.addEventListener('click', ()=> slide(1));
+
+    // Drag / swipe support
+    let startX = 0, startY = 0, dx = 0, dy = 0, dragging = false, moved = false;
+    function onDown(clientX, clientY){
+      if(animating) return;
+      dragging = true; moved = false; startX = clientX; startY = clientY ?? 0; dx = 0; dy = 0;
+      viewport.classList.add('dragging');
+      track.classList.add('dragging');
+      track.style.transition = 'none';
+    }
+    function onMove(clientX, clientY){
+      if(!dragging) return;
+      dx = clientX - startX; dy = (clientY ?? 0) - startY;
+      if (Math.abs(dx) > 5 || Math.abs(dy) > 5) moved = true;
+      track.style.transform = `translateX(${dx}px)`;
+    }
+    function onUp(){
+      if(!dragging) return; dragging = false; viewport.classList.remove('dragging'); track.classList.remove('dragging');
+      const w = itemWidth(); const threshold = Math.max(40, w/5);
+      if (moved) { suppressClickUntil = Date.now() + 350; }
+      if(dx < -threshold){
+        // swipe left -> next
+        const start = dx; track.style.transition = 'transform .35s ease';
+        track.style.transform = `translateX(${-w}px)`;
+        track.addEventListener('transitionend', ()=>{
+          track.appendChild(track.firstElementChild);
+          track.style.transition = 'none'; track.style.transform = 'translateX(0)';
+        }, {once:true});
+      } else if(dx > threshold){
+        // swipe right -> prev
+        track.style.transition = 'none';
+        track.insertBefore(track.lastElementChild, track.firstElementChild);
+        track.style.transform = `translateX(${dx - w}px)`;
+        requestAnimationFrame(()=>{
+          track.style.transition = 'transform .35s ease';
+          track.style.transform = 'translateX(0)';
+        });
+      } else {
+        track.style.transition = 'transform .2s ease';
+        track.style.transform = 'translateX(0)';
+      }
+    }
+
+    // Mouse
+    viewport.addEventListener('mousedown', (e)=> onDown(e.clientX, e.clientY));
+    window.addEventListener('mousemove', (e)=> onMove(e.clientX, e.clientY));
+    window.addEventListener('mouseup', onUp);
+    // Touch
+    viewport.addEventListener('touchstart', (e)=> { if(e.touches[0]) onDown(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
+    window.addEventListener('touchmove', (e)=> { if(e.touches[0]) onMove(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
+    window.addEventListener('touchend', onUp);
+
+    // Keyboard access when controls focused
+    [prev, next].forEach(btn=>{
+      btn.addEventListener('keydown', (e)=>{
+        if(e.key==='ArrowLeft') slide(-1);
+        if(e.key==='ArrowRight') slide(1);
+      });
+    });
+
+    // Reflow on resize to avoid jump
+    window.addEventListener('resize', ()=>{
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(0)';
+    });
+  }
+
+  document.querySelectorAll('.portfolio-wrap').forEach(initCarousel);
+
+  // Modal handling for portfolio items
+  const modalEl = document.getElementById('portfolioModal');
+  if (modalEl) {
+    const bsModal = new bootstrap.Modal(modalEl);
+    const elTitle = modalEl.querySelector('#pm-title');
+    const elImg = modalEl.querySelector('#pm-image');
+    const elDesc = modalEl.querySelector('#pm-desc');
+    document.addEventListener('click', (e)=>{
+      if (Date.now() < suppressClickUntil) return; // ignore click after drag/scroll
+      const img = e.target.closest('.pc-item img');
+      if(!img) return;
+      const title = img.getAttribute('data-title') || img.alt || 'Portfolio Item';
+      const desc = img.getAttribute('data-desc') || '';
+      const large = img.getAttribute('data-large') || img.src;
+      if(elTitle) elTitle.textContent = title;
+      if(elImg) { elImg.src = large; elImg.alt = title; }
+      if(elDesc) elDesc.textContent = desc;
+      bsModal.show();
+    });
+  }
+})();
+</script>
 </body>
 </html>
