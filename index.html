@@ -19,12 +19,72 @@
         scroll-behavior: smooth;
     }
     body {
-        background-color: #f2f2f2;
+        background-color: #dcdcdc;
+        background-image: url('background.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        overflow-x: hidden;
+        min-height: 100vh;
     }
     #home {
         min-height: 100vh;
         display: flex;
         align-items: center;
+        background: transparent;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+    #home .container {
+        position: relative;
+        z-index: 1;
+    }
+    #home .home-text {
+        max-width: 600px;
+    }
+    .home-figure {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: min(95vh, 620px);
+        width: auto;
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+        max-width: 55%;
+        object-fit: contain;
+    }
+    @media (max-width: 991.98px) {
+        #home {
+            text-align: center;
+            padding-top: 2.5rem;
+            padding-bottom: clamp(360px, 65vw, 520px);
+            flex-direction: column;
+            align-items: center;
+        }
+        #home .home-text {
+            margin-inline: auto;
+        }
+        .home-figure {
+            position: relative;
+            display: block;
+            margin: 1.5rem 0 0;
+            height: auto;
+            width: 100%;
+            max-width: none;
+        }
+    }
+    @media (max-width: 575.98px) {
+        #home {
+            padding-top: 1.5rem;
+            padding-bottom: 2rem;
+        }
+        .home-figure {
+            margin-top: 1rem;
+            width: 100%;
+            height: auto;
+        }
     }
     section {
         scroll-margin-top: 50px;
@@ -44,6 +104,9 @@
     .pc-track.dragging { transition: none !important; }
     .pc-viewport.dragging .pc-item img { transform: none !important; box-shadow: 0 2px 8px rgba(0,0,0,.08) !important; }
     .pc-item img { user-select: none; -webkit-user-drag: none; }
+    .portfolio-video-block { text-align: center; }
+    .portfolio-video-player { max-width: 960px; margin: 0 auto; border-radius: 18px; overflow: hidden; box-shadow: 0 12px 35px rgba(0,0,0,.15); background: #000; }
+    .portfolio-video-player video { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
 
     /* Fixed-size portfolio modal; image fits inside */
     .portfolio-modal .modal-dialog { max-width: 900px; width: calc(100% - 2rem); }
@@ -64,6 +127,47 @@
     .navbar-dark .navbar-nav .nav-item:hover .nav-link,
     .navbar-dark .navbar-nav .nav-item.active .nav-link { color: #000000 !important; }
     .navbar-dark .navbar-nav .nav-link:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 2px; }
+    
+    #about h2 {
+      font-size: 2rem;
+    }
+    #about ul li {
+      font-size: 0.95rem;
+    }
+    #about a:hover {
+      text-decoration: underline;
+    }
+    #about hr {
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    @media (max-width: 768px) {
+      #about {
+        text-align: center;
+      }
+      #about img {
+        max-width: 80%;
+        margin-bottom: 20px;
+      }
+      #about ul {
+        columns: 1;
+      }
+      
+    }
+        /* Efek hover untuk ikon sosmed */
+    .social-link:hover {
+      transform: scale(1.2);
+      opacity: 0.9;
+    }
+
+    /* Responsif */
+    @media (max-width: 768px) {
+      #social h2 {
+        font-size: 1.6rem;
+      }
+      #social p {
+        font-size: 0.95rem;
+      }
+    }
 </style>
 </head>
 
@@ -100,78 +204,72 @@
 </nav>
 
 <!-- SECTION HOME -->
-<section id="home" class="container py-5 justify-content-center">
-    <div class="row align-items-center">
-
-        <div class="col-md-6" data-aos="fade-right">
-            <h1 class="fw-bold">Hi, I'm<br>Benedictus Adrian Nelham</h1>
-            <p class="mt-3" data-aos="fade-right" data-aos-delay="100">
-                My name is Adrian, I'm an undergraduate Visual Communication Design student at Bina Nusantara University. 
-            </p>
-            <p class="" data-aos="fade-right" data-aos-delay="200">
-                I really like drawing 
-            </p>
-        </div>
-    <div class="col-md-2"></div>
-
-    <div class="col-md-4 text-center " data-aos="fade-left" data-aos-delay="150">
-      <img src="01.png" 
-           class="img-fluid rounded" alt="Character Image" style="max-height:500px;">
-      <p class="mt-2">Lorem Ipsum</p>
+<section id="home" class="py-5">
+  <div class="container">
+    <div class="home-text" data-aos="fade-right">
+      <h1 class="fw-bold mb-3">Hi, I'm<br>Benedictus Adrian Nelham</h1>
+      <p class="mb-3">
+        My name is Adrian, I'm an undergraduate Visual Communication Design student at Bina Nusantara University.
+      </p>
+      <p class="mb-4">I really like drawing.</p>
     </div>
-
   </div>
+  <img src="01.svg" class="home-figure" alt="Adrian Illustration" data-aos="fade-left" data-aos-duration="1200">
 </section>
 
 <!-- SECTION ABOUT -->
-<section id="about" class="container py-5" style="min-height:100vh;">
-  <div class="row align-items-start">
+<section id="about" class="container py-5" style="min-height: 100vh;">
+  <div class="row align-items-center g-5">
 
-    <!-- FOTO KIRI -->
-    <div class="col-md-4 mb-4" data-aos="fade-right">
-      <img src="profile02.jpg" 
-           alt="Adrian Photo" 
-           class="img-fluid rounded" 
-           style="border-radius: 20px;">
+    <!-- FOTO -->
+    <div class="col-lg-4 text-center" data-aos="fade-right">
+      <img src="profile02.jpg" alt="Adrian Photo"
+        class="img-fluid shadow-lg"
+        style="border-radius: 20px; max-width: 100%; height: auto; object-fit: cover;">
     </div>
 
-    <!-- TEKS KANAN -->
-    <div class="col-md-8" data-aos="fade-left">
-
-      <h2 class="fw-bold">Graphic Designer</h2>
-      <p class="mt-3">
-        Hi, It's Adrian here, so first of all I really like drawing since I was a kid.
-        Growing up with that I learned that I like drawing living creatures.
+    <!-- TEKS -->
+    <div class="col-lg-8" data-aos="fade-left">
+      <h2 class="fw-bold mb-3">Graphic Designer</h2>
+      <p class="text-secondary" style="line-height: 1.7;">
+        Hi, I'm Adrian! I've loved drawing since I was a kid — and over time, I discovered
+        that I really enjoy illustrating living creatures and bringing ideas to life through design.
       </p>
 
-      <div class="row mt-4">
-        
+      <hr class="my-4" style="opacity: 0.2;">
+
+      <div class="row gy-4">
+
         <!-- EXPERIENCE -->
-        <div class="col-md-6 mb-4">
-          <h5 class="fw-bold">Experience</h5>
-          <ul class="list-unstyled mt-2">
-            <li><a href="#" class="text-decoration-none">2nd Winner English Speech Contest (2017)</a></li>
-            <li><a href="#" class="text-decoration-none">TeachCast with Oxford Course (2020)</a></li>
-            <li><a href="#" class="text-decoration-none">Merry Bianca Life Camp as Assistant Coach (2022)</a></li>
-            <li><a href="#" class="text-decoration-none">Freshman Partner at BINUS University (2024 - 2025)</a></li>
+        <div class="col-md-6">
+          <h5 class="fw-bold text-uppercase mb-3" style="padding-bottom:4px;border-bottom:3px solid #000;">Experience</h5>
+          <ul class="list-unstyled mb-0" style="line-height: 1.8;">
+            <li><a href="#" class="text-decoration-none text-primary">2nd Winner English Speech Contest (2017)</a></li>
+            <li><a href="#" class="text-decoration-none text-primary">TeachCast with Oxford Course (2020)</a></li>
+            <li><a href="#" class="text-decoration-none text-primary">Merry Bianca Life Camp – Assistant Coach (2022)</a></li>
+            <li><a href="#" class="text-decoration-none text-primary">Freshman Partner – BINUS University (2024–2025)</a></li>
           </ul>
         </div>
 
         <!-- EDUCATION -->
-        <div class="col-md-6 mb-4">
-          <h5 class="fw-bold">Education</h5>
-          <p class="mt-2 mb-1">2020 - 2023<br>SMA Putra Nirmala Cirebon<br>Social</p>
-          <p class="mt-2">2023 - Present<br>BINA NUSANTARA University<br>Visual Communication Design</p>
+        <div class="col-md-6">
+          <h5 class="fw-bold text-uppercase mb-3" style="padding-bottom:4px;border-bottom:3px solid #000;">Education</h5>
+          <ul class="list-unstyled mb-0" style="line-height: 1.8;">
+            <li><strong>2020 – 2023</strong><br>SMA Putra Nirmala Cirebon<br><span class="text-muted">Social</span></li>
+            <li class="mt-3"><strong>2023 – Present</strong><br>BINA NUSANTARA University<br><span class="text-muted">Visual Communication Design</span></li>
+          </ul>
         </div>
 
       </div>
 
-      <div class="row mt-3">
+      <hr class="my-4" style="opacity: 0.1;">
+
+      <div class="row gy-4 align-items-start mt-2">
 
         <!-- SKILLS -->
-        <div class="col-md-6 mb-4">
-          <h5 class="fw-bold">Skills</h5>
-          <ul class="list-unstyled mt-2">
+        <div class="col-md-6" style="margin-top: -15px;">
+          <h5 class="fw-bold text-uppercase mb-3" style="padding-bottom:4px;border-bottom:3px solid #000;">Skills</h5>
+          <ul class="list-unstyled mb-0" style="columns: 2; line-height: 1.8;">
             <li>Graphic Design</li>
             <li>Photography</li>
             <li>Video Editing</li>
@@ -184,25 +282,29 @@
         </div>
 
         <!-- TRAITS -->
-        <div class="col-md-6 mb-4">
-          <h5 class="fw-bold">Traits</h5>
-          <ul class="list-unstyled mt-2">
-            <li>Easy going</li>
+        <div class="col-md-6" style="margin-top: -15px;">
+          <h5 class="fw-bold text-uppercase mb-3" style="padding-bottom:4px;border-bottom:3px solid #000;">Traits</h5>
+          <ul class="list-unstyled mb-0" style="line-height: 1.8;">
+            <li>Easy Going</li>
             <li>Cheerful</li>
-            <li>Patience</li>
+            <li>Patient</li>
           </ul>
         </div>
 
       </div>
-
     </div>
-
   </div>
+
+  <style>
+
+  </style>
 </section>
 
 
+
+
 <!-- SECTION PORTFOLIO -->
-<section id="portfolio" class="container-fluid py-5" style="background:#ddd;">
+<section id="portfolio" class="container-fluid py-5;">
   <div class="container">
     <div class="text-center mb-4">
       <h2 class="fw-bold" data-aos="fade-up">Portfolio</h2>
@@ -212,7 +314,7 @@
       </p>
     </div>
 
-    <!-- Carousel 1 Digital illustration-->
+    <!-- Digital illustration-->
     <div class="portfolio-wrap" data-aos="fade-up">
       <div class="d-flex justify-content-between align-items-center pc-header">
         <h3 class="pc-title">Digital Illustration</h3>
@@ -223,21 +325,21 @@
       </div>
       <div class="pc-viewport">
         <div class="pc-track">
-          <div class="pc-item"><img src="digital_illustration/01.png" alt="Item 1"></div>
-          <div class="pc-item"><img src="digital_illustration/02.png" alt="Item 2"></div>
-          <div class="pc-item"><img src="digital_illustration/03.png" alt="Item 3"></div>
-          <div class="pc-item"><img src="digital_illustration/04.png" alt="Item 4"></div>
-          <div class="pc-item"><img src="digital_illustration/05.png" alt="Item 5"></div>
+          <div class="pc-item"><img src="digital_illustration/01.png" alt="Xenomorph & Facehugger"></div>
+          <div class="pc-item"><img src="digital_illustration/02.png" alt="Demogorgon"></div>
+          <div class="pc-item"><img src="digital_illustration/03.png" alt="Godzilla VS Kong"></div>
+          <div class="pc-item"><img src="digital_illustration/04.png" alt="Monster Among Us"></div>
+          <div class="pc-item"><img src="digital_illustration/05.png" alt="Artificial Intelligence x Ancient Egypt Concept Art"></div>
           <div class="pc-item"><img src="digital_illustration/06.png" alt="Item 6"></div>
-          <div class="pc-item"><img src="digital_illustration/07.png" alt="Item 7"></div>
+          <div class="pc-item"><img src="digital_illustration/07.png" alt="Deep Sea Squid"></div>
           <div class="pc-item"><img src="digital_illustration/08.png" alt="Item 8"></div>
-          <div class="pc-item"><img src="digital_illustration/09.jpg" alt="Item 9"></div>
-          <div class="pc-item"><img src="digital_illustration/10.png" alt="Item 10"></div>
+          <div class="pc-item"><img src="digital_illustration/09.jpg" alt="Isometric Design"></div>
+          <div class="pc-item"><img src="digital_illustration/10.png" alt="UFO Invasion"></div>
         </div>
       </div>
     </div>
 
-    <!-- Carousel 2 -->
+    <!-- Manual Illustration-->
     <div class="portfolio-wrap" data-aos="fade-up">
       <div class="d-flex justify-content-between align-items-center pc-header">
         <h3 class="pc-title">Manual Illustration</h3>
@@ -248,16 +350,16 @@
       </div>
       <div class="pc-viewport">
         <div class="pc-track">
-          <div class="pc-item"><img src="manual_illustration/01.jpg" alt="Item 1"></div>
-          <div class="pc-item"><img src="manual_illustration/02.jpg" alt="Item 2"></div>
-          <div class="pc-item"><img src="manual_illustration/03.jpg" alt="Item 3"></div>
-          <div class="pc-item"><img src="manual_illustration/04.jpg" alt="Item 4"></div>
-          <div class="pc-item"><img src="manual_illustration/05.jpg" alt="Item 5"></div>
+          <div class="pc-item"><img src="manual_illustration/01.jpg" alt="Hybrid Concept: Crocodile x Bat x Peacock"></div>
+          <div class="pc-item"><img src="manual_illustration/02.jpg" alt="Hybrid Concept Sketches"></div>
+          <div class="pc-item"><img src="manual_illustration/03.jpg" alt="Hybrid Concept: Giraffe x Monitor Lizard x Pelican"></div>
+          <div class="pc-item"><img src="manual_illustration/04.jpg" alt="Giraffe"></div>
+          <div class="pc-item"><img src="manual_illustration/05.jpg" alt="Final Concept Art: Hybrid Animal (Giraffe x Monitor Lizard x Pelican)"></div>
         </div>
       </div>
     </div>
 
-    <!-- Carousel 3 -->
+    <!-- Photography -->
     <div class="portfolio-wrap" data-aos="fade-up">
       <div class="d-flex justify-content-between align-items-center pc-header">
         <h3 class="pc-title">Photography</h3>
@@ -268,14 +370,14 @@
       </div>
       <div class="pc-viewport">
         <div class="pc-track">
-          <div class="pc-item"><img src="photography/01.jpg" alt="Item 1"></div>
-          <div class="pc-item"><img src="photography/02.jpg" alt="Item 2"></div>
-          <div class="pc-item"><img src="photography/03.jpg" alt="Item 3"></div>
+          <div class="pc-item"><img src="photography/01.jpg" alt="Gundam Barbatos"></div>
+          <div class="pc-item"><img src="photography/02.jpg" alt="Gundam Barbatos"></div>
+          <div class="pc-item"><img src="photography/03.jpg" alt="Gundam Barbatos"></div>
         </div>
       </div>
     </div>
 
-    <!-- Carousel 4 -->
+    <!-- Poster Design -->
     <div class="portfolio-wrap" data-aos="fade-up">
       <div class="d-flex justify-content-between align-items-center pc-header">
         <h3 class="pc-title">Poster Design</h3>
@@ -284,11 +386,28 @@
           <button class="btn btn-light rounded-circle pc-next ms-2" aria-label="Next">&#8250;</button>
         </div>
       </div>
-      <div class="pc-viewport">
-        <div class="pc-track">
-          <div class="pc-item"><img src="poster_design/01.png" alt="Item 1"></div>
-          <div class="pc-item"><img src="poster_design/02.png" alt="Item 2"></div>
-          <div class="pc-item"><img src="poster_design/03.jpg" alt="Item 3"></div>
+    <div class="pc-viewport">
+      <div class="pc-track">
+        <div class="pc-item"><img src="poster_design/01.png" alt="Godzilla VS Kong Movie Poster"></div>
+        <div class="pc-item"><img src="poster_design/02.png" alt="TYFEST BINUS 2024"></div>
+        <div class="pc-item"><img src="poster_design/03.jpg" alt="TYPOGRAPHY POSTER"></div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Video showcase -->
+    <div class="portfolio-wrap" data-aos="fade-up">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="portfolio-video-block">
+            <h3 class="pc-title mb-3 text-center">Motion Graphic Video</h3>
+            <div class="ratio ratio-16x9 portfolio-video-player">
+              <video id="portfolioVideo" controls autoplay loop muted preload="metadata" playsinline poster="01.png">
+                <source src="motion_graphic.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+              </video>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -316,36 +435,45 @@
 
 
 <!-- SECTION SOCIAL -->
-<section id="social" class="py-5 text-center" style="background: #111; color: #fff; min-height: 100vh;">
-  <div class="container">
-    <h2 class="mb-4" data-aos="fade-up" style="font-weight: 600; letter-spacing: 1px;">
-      SOSMED GUE
+<!-- SECTION SOCIAL -->
+<section id="social" class="py-5 text-center" style="background: #111; color: #fff; min-height: 100vh; display: flex; align-items: center;">
+  <div class="container" style="max-width: 700px;">
+    <h2 class="mb-3" data-aos="fade-up" style="font-weight: 700; letter-spacing: 1px; font-size: 2rem;">
+      SOSIAL MEDIA GUE
     </h2>
-    <p class="mb-5 text-light" data-aos="fade-up" data-aos-delay="100">
-      Want to visit my social media? 
-Check these below and find me there
-I’d gladly welcome everyone
+
+    <p class="mb-5 text-light" data-aos="fade-up" data-aos-delay="100" style="font-size: 1rem; line-height: 1.6;">
+      Mau lihat keseharian gue atau ngintip karya terbaru?  
+      Yuk mampir ke sosial media gue di bawah ini — feel free to connect!
     </p>
 
     <!-- Social Icons -->
-    <div class="d-flex justify-content-center flex-wrap gap-4 mt-4">
-      <a href="https://instagram.com/USERNAME" target="_blank" class="social-link" style="color:#E1306C;">
+    <div class="d-flex justify-content-center flex-wrap gap-4 mt-4" data-aos="zoom-in" data-aos-delay="200">
+      <a href="https://www.instagram.com/adrian00264?igsh=MWZicGJpbGtoMnllaQ%3D%3D" target="_blank" class="social-link" 
+         style="color:#E1306C; transition: transform 0.3s, color 0.3s;">
         <i class="fab fa-instagram fa-3x"></i>
       </a>
 
-      <a href="https://tiktok.com/@USERNAME" target="_blank" class="social-link" style="color:#fff;">
+      <a href="https://www.tiktok.com/@heiaddd._?_r=1&_t=ZS-91N3rgWLx9W" target="_blank" class="social-link" 
+         style="color:#fff; transition: transform 0.3s, color 0.3s;">
         <i class="fab fa-tiktok fa-3x"></i>
       </a>
 
-      <a href="https://youtube.com/@USERNAME" target="_blank" class="social-link" style="color:#FF0000;">
+      <a href="https://youtube.com/@adriankotak?si=zk-ZTTC60Sdg3Igk" target="_blank" class="social-link" 
+         style="color:#FF0000; transition: transform 0.3s, color 0.3s;">
         <i class="fab fa-youtube fa-3x"></i>
       </a>
 
-      <a href="https://wa.me/62XXXXXXXXXX" target="_blank" class="social-link" style="color:#25D366;">
+      <a href="https://wa.me/+6281395475367" target="_blank" class="social-link" 
+         style="color:#25D366; transition: transform 0.3s, color 0.3s;">
         <i class="fab fa-whatsapp fa-3x"></i>
       </a>
     </div>
   </div>
+
+  <style>
+
+  </style>
 </section>
 
 
@@ -563,6 +691,42 @@ I’d gladly welcome everyone
       bsModal.show();
     });
   }
+})();
+</script>
+
+<!-- Auto-play looping for portfolio video -->
+<script>
+(function(){
+  const video = document.getElementById('portfolioVideo');
+  if (!video) return;
+
+  const tryPlay = () => {
+    video.loop = true;
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise && playPromise.catch) {
+      playPromise.catch(() => {
+        const resume = () => {
+          video.play().catch(() => {});
+          document.removeEventListener('pointerdown', resume);
+          document.removeEventListener('touchstart', resume);
+        };
+        document.addEventListener('pointerdown', resume, { once: true });
+        document.addEventListener('touchstart', resume, { once: true });
+      });
+    }
+  };
+
+  if (video.readyState >= 3) {
+    tryPlay();
+  } else {
+    video.addEventListener('canplay', tryPlay, { once: true });
+  }
+
+  video.addEventListener('ended', () => {
+    video.currentTime = 0;
+    video.play().catch(() => {});
+  });
 })();
 </script>
 </body>
