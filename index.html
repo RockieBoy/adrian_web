@@ -766,7 +766,9 @@
     if (source && source.dataset.src) {
       source.src = source.dataset.src;
       source.removeAttribute('data-src');
+      source.setAttribute('fetchpriority', 'high');
     }
+    video.preload = 'auto';
     video.load();
     isLoaded = true;
   };
@@ -797,18 +799,19 @@
     else video.addEventListener('canplay', begin, { once: true });
   };
 
-  const observer = ('IntersectionObserver' in window)
+  const observeTarget = document.getElementById('portfolio') || video;
+  const observer = ('IntersectionObserver' in window) && observeTarget
     ? new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
             startVideo();
             obs.disconnect();
           }
         });
-      }, { rootMargin: '200px 0px' })
+      }, { rootMargin: '150px 0px -10% 0px' })
     : null;
 
-  if (observer) observer.observe(video);
+  if (observer) observer.observe(observeTarget);
   else startVideo(); // fallback for older browsers
 
   video.addEventListener('ended', () => {
