@@ -9,11 +9,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- AOS (Animate On Scroll) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 />
   <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/coolvetica-2">
+  <link rel="preload" href="background.svg" as="image" fetchpriority="high">
+  <link rel="preload" href="01.svg" as="image" fetchpriority="high">
 
 <style>
     html {
@@ -142,6 +146,11 @@
     .navbar-dark .navbar-nav .nav-item.active .nav-link { color: #000000 !important; }
     .navbar-dark .navbar-nav .nav-link:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 2px; }
     .navbar.sticky-top { position: sticky; top: 0; z-index: 1050; width: 100%; }
+    .page-wrapper {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
     
     #about h2 {
       font-size: 2rem;
@@ -166,7 +175,9 @@
       #about ul {
         columns: 1;
       }
-      
+      .traits-column {
+        margin-top: 1.5rem !important;
+      }
     }
         /* Efek hover untuk ikon sosmed */
     .social-link:hover {
@@ -218,6 +229,8 @@
     </div>
 </nav>
 
+<div class="page-wrapper">
+
 <!-- SECTION HOME -->
 <section id="home" class="py-5">
   <div class="container">
@@ -229,7 +242,7 @@
       <p class="mb-4">I really like drawing.</p>
     </div>
   </div>
-  <img src="01.svg" class="home-figure" alt="Adrian Illustration" data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease-in">
+  <img src="01.svg" class="home-figure" alt="Adrian Illustration" fetchpriority="high" decoding="async" data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease-in">
 </section>
 
 <!-- SECTION ABOUT -->
@@ -239,7 +252,7 @@
     <!-- FOTO -->
     <div class="col-lg-4 text-center" data-aos="fade-right">
       <img src="profile02.jpg" alt="Adrian Photo"
-        class="img-fluid shadow-lg"
+        class="img-fluid shadow-lg" loading="lazy" decoding="async" fetchpriority="low"
         style="border-radius: 20px; max-width: 100%; height: auto; object-fit: cover;">
     </div>
 
@@ -297,7 +310,7 @@
         </div>
 
         <!-- TRAITS -->
-        <div class="col-md-6" style="margin-top: -15px;">
+        <div class="col-md-6 traits-column" style="margin-top: -15px;">
           <h5 class="fw-bold text-uppercase mb-3" style="padding-bottom:4px;border-bottom:3px solid #000;">Traits</h5>
           <ul class="list-unstyled mb-0" style="line-height: 1.8;">
             <li>Easy Going</li>
@@ -340,16 +353,16 @@
       </div>
       <div class="pc-viewport">
         <div class="pc-track">
-          <div class="pc-item"><img src="digital_illustration/01.png" alt="Xenomorph & Facehugger"></div>
-          <div class="pc-item"><img src="digital_illustration/02.png" alt="Demogorgon"></div>
-          <div class="pc-item"><img src="digital_illustration/03.png" alt="Godzilla VS Kong"></div>
-          <div class="pc-item"><img src="digital_illustration/04.png" alt="Monster Among Us"></div>
-          <div class="pc-item"><img src="digital_illustration/05.png" alt="Artificial Intelligence x Ancient Egypt Concept Art"></div>
-          <div class="pc-item"><img src="digital_illustration/06.png" alt="Item 6"></div>
-          <div class="pc-item"><img src="digital_illustration/07.png" alt="Deep Sea Squid"></div>
-          <div class="pc-item"><img src="digital_illustration/08.png" alt="Item 8"></div>
-          <div class="pc-item"><img src="digital_illustration/09.jpg" alt="Isometric Design"></div>
-          <div class="pc-item"><img src="digital_illustration/10.png" alt="UFO Invasion"></div>
+          <div class="pc-item"><img src="digital_illustration/01.png" alt="Xenomorph & Facehugger" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="digital_illustration/02.png" alt="Demogorgon" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="digital_illustration/03.png" alt="Godzilla VS Kong" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="digital_illustration/04.png" alt="Monster Among Us" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="digital_illustration/05.png" alt="Artificial Intelligence x Ancient Egypt Concept Art" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="digital_illustration/06.png" alt="Item 6" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="digital_illustration/07.png" alt="Deep Sea Squid" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="digital_illustration/08.png" alt="Item 8" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="digital_illustration/09.jpg" alt="Isometric Design" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="digital_illustration/10.png" alt="UFO Invasion" loading="lazy" decoding="async" fetchpriority="low"></div>
         </div>
       </div>
     </div>
@@ -365,11 +378,11 @@
       </div>
       <div class="pc-viewport">
         <div class="pc-track">
-          <div class="pc-item"><img src="manual_illustration/01.jpg" alt="Hybrid Concept: Crocodile x Bat x Peacock"></div>
-          <div class="pc-item"><img src="manual_illustration/02.jpg" alt="Hybrid Concept Sketches"></div>
-          <div class="pc-item"><img src="manual_illustration/03.jpg" alt="Hybrid Concept: Giraffe x Monitor Lizard x Pelican"></div>
-          <div class="pc-item"><img src="manual_illustration/04.jpg" alt="Giraffe"></div>
-          <div class="pc-item"><img src="manual_illustration/05.jpg" alt="Final Concept Art: Hybrid Animal (Giraffe x Monitor Lizard x Pelican)"></div>
+          <div class="pc-item"><img src="manual_illustration/01.jpg" alt="Hybrid Concept: Crocodile x Bat x Peacock" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="manual_illustration/02.jpg" alt="Hybrid Concept Sketches" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="manual_illustration/03.jpg" alt="Hybrid Concept: Giraffe x Monitor Lizard x Pelican" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="manual_illustration/04.jpg" alt="Giraffe" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="manual_illustration/05.jpg" alt="Final Concept Art: Hybrid Animal (Giraffe x Monitor Lizard x Pelican)" loading="lazy" decoding="async" fetchpriority="low"></div>
         </div>
       </div>
     </div>
@@ -385,9 +398,9 @@
       </div>
       <div class="pc-viewport">
         <div class="pc-track">
-          <div class="pc-item"><img src="photography/01.jpg" alt="Gundam Barbatos"></div>
-          <div class="pc-item"><img src="photography/02.jpg" alt="Gundam Barbatos"></div>
-          <div class="pc-item"><img src="photography/03.jpg" alt="Gundam Barbatos"></div>
+          <div class="pc-item"><img src="photography/01.jpg" alt="Gundam Barbatos" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="photography/02.jpg" alt="Gundam Barbatos" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="photography/03.jpg" alt="Gundam Barbatos" loading="lazy" decoding="async" fetchpriority="low"></div>
         </div>
       </div>
     </div>
@@ -403,9 +416,9 @@
       </div>
     <div class="pc-viewport">
       <div class="pc-track">
-        <div class="pc-item"><img src="poster_design/01.png" alt="Godzilla VS Kong Movie Poster"></div>
-        <div class="pc-item"><img src="poster_design/02.png" alt="TYFEST BINUS 2024"></div>
-        <div class="pc-item"><img src="poster_design/03.jpg" alt="TYPOGRAPHY POSTER"></div>
+          <div class="pc-item"><img src="poster_design/01.png" alt="Godzilla VS Kong Movie Poster" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="poster_design/02.png" alt="TYFEST BINUS 2024" loading="lazy" decoding="async" fetchpriority="low"></div>
+          <div class="pc-item"><img src="poster_design/03.jpg" alt="TYPOGRAPHY POSTER" loading="lazy" decoding="async" fetchpriority="low"></div>
       </div>
     </div>
   </div>
@@ -417,8 +430,8 @@
           <div class="portfolio-video-block">
             <h3 class="pc-title mb-3 text-center">Motion Graphic Video</h3>
             <div class="ratio ratio-16x9 portfolio-video-player">
-              <video id="portfolioVideo" controls autoplay loop muted preload="metadata" playsinline poster="01.png">
-                <source src="motion_graphic.mp4" type="video/mp4">
+              <video id="portfolioVideo" controls loop muted preload="none" playsinline poster="01.png" data-auto-play="true">
+                <source data-src="motion_graphic.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
             </div>
@@ -499,6 +512,8 @@
   </div>
 </footer>
 
+</div>
+
 <!-- AOS (Animate On Scroll) -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
@@ -525,28 +540,54 @@
     });
   };
 
-  let observer; let isManual = false; let manualTimer;
-  const buildObserver = () => {
-    if (observer) observer.disconnect();
+  const getNavHeight = () => {
     const nav = document.querySelector('.navbar');
-    const h = nav ? nav.offsetHeight : 0;
-    observer = new IntersectionObserver((entries) => {
-      if (isManual) return;
-      let topMost = null;
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (!topMost || entry.intersectionRatio > topMost.intersectionRatio) {
-            topMost = entry;
-          }
-        }
-      });
-      if (topMost) setActive(topMost.target.id);
-    }, { threshold: [0.5, 0.75], rootMargin: `-${h + 8}px 0px -40% 0px` });
-    sections.forEach(sec => observer.observe(sec));
+    return nav ? nav.offsetHeight : 0;
   };
 
-  buildObserver();
-  window.addEventListener('resize', () => buildObserver());
+  const sectionOffsets = () => sections.map(sec => ({
+    id: sec.id,
+    top: sec.offsetTop
+  }));
+
+  let cachedOffsets = sectionOffsets();
+  window.addEventListener('resize', () => {
+    cachedOffsets = sectionOffsets();
+    updateActive();
+  });
+
+  let isManual = false;
+  let manualTimer;
+  let ticking = false;
+
+  const updateActive = () => {
+    if (isManual) return;
+    const navH = getNavHeight();
+    const scrollY = window.scrollY || window.pageYOffset;
+    const offsetLine = scrollY + navH + 24;
+    let current = cachedOffsets[0];
+    cachedOffsets.forEach(sec => {
+      if (sec.top <= offsetLine) current = sec;
+    });
+
+    // Handle near-bottom case to ensure last section is selected
+    const scrolledToBottom = (window.innerHeight + scrollY) >= (document.body.offsetHeight - 2);
+    if (scrolledToBottom) current = cachedOffsets[cachedOffsets.length - 1];
+
+    if (current) setActive(current.id);
+  };
+
+  const onScroll = () => {
+    if (isManual || ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      updateActive();
+      ticking = false;
+    });
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  updateActive();
 
   // Initial state
   if (location.hash && document.querySelector(location.hash)) {
@@ -566,7 +607,10 @@
     setActive(id);
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     try { history.replaceState(null, '', '#' + id); } catch {}
-    manualTimer = setTimeout(() => { isManual = false; }, 700);
+    manualTimer = setTimeout(() => {
+      isManual = false;
+      updateActive();
+    }, 700);
   }));
 })();
 </script>
@@ -709,38 +753,67 @@
 })();
 </script>
 
-<!-- Auto-play looping for portfolio video -->
+<!-- Lazy start + looping for portfolio video -->
 <script>
 (function(){
   const video = document.getElementById('portfolioVideo');
   if (!video) return;
+  const source = video.querySelector('source[data-src]');
+  let isLoaded = false;
+
+  const loadVideo = () => {
+    if (isLoaded) return;
+    if (source && source.dataset.src) {
+      source.src = source.dataset.src;
+      source.removeAttribute('data-src');
+    }
+    video.load();
+    isLoaded = true;
+  };
 
   const tryPlay = () => {
-    video.loop = true;
-    video.muted = true;
     const playPromise = video.play();
     if (playPromise && playPromise.catch) {
+      const resume = () => {
+        video.play().catch(() => {});
+        window.removeEventListener('pointerdown', resume);
+        window.removeEventListener('touchstart', resume);
+      };
       playPromise.catch(() => {
-        const resume = () => {
-          video.play().catch(() => {});
-          document.removeEventListener('pointerdown', resume);
-          document.removeEventListener('touchstart', resume);
-        };
-        document.addEventListener('pointerdown', resume, { once: true });
-        document.addEventListener('touchstart', resume, { once: true });
+        window.addEventListener('pointerdown', resume, { once: true });
+        window.addEventListener('touchstart', resume, { once: true });
       });
     }
   };
 
-  if (video.readyState >= 3) {
-    tryPlay();
-  } else {
-    video.addEventListener('canplay', tryPlay, { once: true });
-  }
+  const startVideo = () => {
+    loadVideo();
+    const begin = () => {
+      video.loop = true;
+      video.muted = true;
+      tryPlay();
+    };
+    if (video.readyState >= 3) begin();
+    else video.addEventListener('canplay', begin, { once: true });
+  };
+
+  const observer = ('IntersectionObserver' in window)
+    ? new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            startVideo();
+            obs.disconnect();
+          }
+        });
+      }, { rootMargin: '200px 0px' })
+    : null;
+
+  if (observer) observer.observe(video);
+  else startVideo(); // fallback for older browsers
 
   video.addEventListener('ended', () => {
     video.currentTime = 0;
-    video.play().catch(() => {});
+    tryPlay();
   });
 })();
 </script>
